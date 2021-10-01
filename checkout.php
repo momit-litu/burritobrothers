@@ -1171,7 +1171,7 @@ include 'views/layout/footer_files.php';
 			formData.set("pickup_date_time",pickup_date_time);
             localStorage.setItem('bill_id','');
 			localStorage.setItem('project_url','');
-			
+			$('#pre-loader').delay(1000).toggle();
 			$.ajax({
                 url: "includes/controller/ecommerceController.php",
                 type:'POST',
@@ -1182,7 +1182,8 @@ include 'views/layout/footer_files.php';
                 success: function(data){
 					data = $.trim(data).replace(/(^[ \t]*\n)/gm, "");
                     if(data==0 || data.substring(0, 2)!="BB"){
-                        success_or_error_msg('#logn_reg_error',"danger","Order failed. please check your information properly. You should refresh the page and try again","#checkout_submit" );
+                        $('#pre-loader').toggle();
+						success_or_error_msg('#logn_reg_error',"danger","Order failed. please check your information properly. You should refresh the page and try again","#checkout_submit" );
                     }
                     else{
                         if($('input[name=payment_method]:checked', '#checkout-form').val()==3){
