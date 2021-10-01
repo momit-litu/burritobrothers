@@ -320,7 +320,7 @@ switch ($q){
                 'total_order_amt'=>$total_order_amt,
                 'tax_amount'=>$tax_amount,
                 'total_paid_amount'=>$total_paid_amount,
-                'tips'=>(float)(!$tips)?0:$tips,
+                'tips'=>(float)(!isset($tips))?0:$tips,
                 'payment_status' =>1,
                 'loyalty_point'=>$loyalty_point,
                 'loyalty_paid'=>$loyalty_deduct,
